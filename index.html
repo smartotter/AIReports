@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年3月全球人工智能行业月度洞察报告</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- 统一的 Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',      // 深蓝主色
+                        secondary: '#2b6cb0',    // 中蓝辅助色
+                        accent: '#4299e1',       // 浅蓝强调色
+                        highlight: '#63b3ed',    // 高亮色
+                        neutral: '#e2e8f0',      // 中性色
+                        'neutral-dark': '#4a5568', // 深中性色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'Cambria', 'serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+            }
+            .card-transition {
+                transition: all 0.3s ease;
+            }
+            .chart-container {
+                position: relative;
+                height: 300px;
+                width: 100%;
+            }
+            .scrollbar-thin {
+                scrollbar-width: thin;
+            }
+            .scrollbar-thin::-webkit-scrollbar {
+                width: 6px;
+            }
+            .scrollbar-thin::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+            .scrollbar-thin::-webkit-scrollbar-thumb {
+                background: #cbd5e0;
+                border-radius: 3px;
+            }
+            .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+                background: #a0aec0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- 顶部导航栏 -->
+    <header class="bg-gradient-blue text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <i class="fa fa-line-chart text-2xl mr-3"></i>
+                <h1 class="text-xl md:text-2xl font-bold text-shadow">全球人工智能产业研究院</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="hidden md:inline-block"><i class="fa fa-calendar mr-1"></i> 2026年3月31日</span>
+                <button id="theme-toggle" class="bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition-all">
+                    <i class="fa fa-moon-o"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 报告标题区 -->
+        <section class="mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">2026年3月全球人工智能行业月度洞察报告</h2>
+            <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                深度剖析全球AI产业格局重构、智能体技术落地、算力基础设施竞争、多模态大模型进展及AI治理趋势
+            </p>
+        </section>
+
+        <!-- 核心摘要卡片 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl shadow-card p-6 mb-8">
+                <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                    <i class="fa fa-star text-yellow-500 mr-3"></i>
+                    核心摘要
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 摘要卡片1 -->
+                    <div class="bg-blue-50 rounded-lg p-5 card-transition hover:shadow-card-hover">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="font-bold">一</span>
+                            </div>
+                            <p class="text-gray-700">全球AI产业格局加速重构，中国AI在应用层与推理成本优势方面实现历史性突破，开源生态全球影响力显著提升</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 摘要卡片2 -->
+                    <div class="bg-blue-50 rounded-lg p-5 card-transition hover:shadow-card-hover">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="font-bold">二</span>
+                            </div>
+                            <p class="text-gray-700">智能体技术从概念验证走向规模化落地，OpenClaw等开源项目引发全球开发者热潮，企业级智能体应用场景持续深化</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 摘要卡片3 -->
+                    <div class="bg-blue-50 rounded-lg p-5 card-transition hover:shadow-card-hover">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="font-bold">三</span>
+                            </div>
+                            <p class="text-gray-700">算力基础设施竞争进入白热化阶段，各大科技巨头加速数据中心布局与芯片研发投入，全球算力需求呈爆发式增长</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 摘要卡片4 -->
+                    <div class="bg-blue-50 rounded-lg p-5 card-transition hover:shadow-card-hover">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="font-bold">四</span>
+                            </div>
+                            <p class="text-gray-700">多模态大模型技术快速迭代，视频生成、音频处理等领域取得显著进展，但商业化路径与盈利模式仍面临挑战</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 摘要卡片5 -->
+                    <div class="bg-blue-50 rounded-lg p-5 card-transition hover:shadow-card-hover">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="font-bold">五</span>
+                            </div>
+                            <p class="text-gray-700">AI治理与安全议题日益凸显，全球主要经济体密集出台监管政策，技术滥用风险引发社会关注</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关键趋势研判 -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                <i class="fa fa-compass text-accent mr-3"></i>
+                关键趋势研判
+            </h3>
+            
+            <!-- 趋势一 -->
+            <div class="bg-white rounded-xl shadow-card p-6 mb-8">
+                <div class="flex flex-col md:flex-row md:items-center mb-6">
+                    <h4 class="text-xl font-bold text-secondary mb-2 md:mb-0 md:mr-4">趋势一：智能体技术加速进入生产场景，重塑人机协作模式</h4>
+                    <span class="bg-blue-100 text-primary px-3 py-1 rounded-full text-sm font-medium self-start md:self-center">热点趋势</span>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2">
+                        <div class="mb-6">
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">现象描述</h5>
+                            <p class="text-gray-600">
+                                2026年3月，智能体（Agent）技术呈现爆发式发展态势。开源项目OpenClaw在GitHub平台获得超过30万星标，全球开发者广泛参与。百度文心一言开放智能体创建平台，累计创建智能体超120万个，商业用途占比达32%。英伟达GTC大会上发布NemoClaw企业级AI智能体平台，已有超过500家全球500强企业预订服务。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">核心驱动力</h5>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                                <li>技术层面：大模型推理能力显著提升，支持复杂任务规划与工具调用</li>
+                                <li>商业层面：企业数字化转型需求迫切，期望通过智能体提升运营效率</li>
+                                <li>生态层面：开源社区推动技术快速迭代与普及，降低应用门槛</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">对行业的影响</h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h6 class="font-medium text-gray-700 mb-2">短期效应</h6>
+                                    <p class="text-gray-600">智能体将在客服、代码开发、数据分析等领域快速替代重复性工作，推动人力结构优化</p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h6 class="font-medium text-gray-700 mb-2">长期效应</h6>
+                                    <p class="text-gray-600">智能体将重塑企业组织架构与业务流程，催生"数字员工"新型生产力，加速推进制造业智能化转型升级</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-4 text-center">OpenClaw GitHub星标增长趋势</h5>
+                        <div class="chart-container">
+                            <canvas id="openclawChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 趋势二 -->
+            <div class="bg-white rounded-xl shadow-card p-6 mb-8">
+                <div class="flex flex-col md:flex-row md:items-center mb-6">
+                    <h4 class="text-xl font-bold text-secondary mb-2 md:mb-0 md:mr-4">趋势二：开源模型生态崛起，打破闭源垄断格局</h4>
+                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium self-start md:self-center">增长趋势</span>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2">
+                        <div class="mb-6">
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">现象描述</h5>
+                            <p class="text-gray-600">
+                                中国开源模型在全球市场取得突破性进展。阿里通义千问Qwen 3.0在Hugging Face平台累计下载量突破5000万次，超越Meta Llama 4的4200万次。百度文心Lite开源版上线两个月累计下载量超300万次，已有超4000家中小企业基于该模型开发垂直应用。全球60%的欧美AI创业公司正在基于中国开源模型进行二次开发。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">核心驱动力</h5>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                                <li>成本优势是核心竞争力，AI推理成本较2023年下降70%，国产芯片渗透率达35%</li>
+                                <li>开源协议宽松，开发者可免费获取模型权重进行二次开发</li>
+                                <li>本地化适配能力强，更契合区域市场需求</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">对行业的影响</h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h6 class="font-medium text-gray-700 mb-2">短期效应</h6>
+                                    <p class="text-gray-600">开源模型降低了企业部署AI的技术门槛与资金压力，推动AI应用快速普及</p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h6 class="font-medium text-gray-700 mb-2">长期效应</h6>
+                                    <p class="text-gray-600">开源生态促进技术创新多元化，避免技术垄断风险，为全球AI产业健康发展提供可持续动力</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-4 text-center">主流开源模型下载量对比</h5>
+                        <div class="chart-container">
+                            <canvas id="modelDownloadChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 趋势三 -->
+            <div class="bg-white rounded-xl shadow-card p-6">
+                <div class="flex flex-col md:flex-row md:items-center mb-6">
+                    <h4 class="text-xl font-bold text-secondary mb-2 md:mb-0 md:mr-4">趋势三：算力军备竞赛持续升级，能源约束日益凸显</h4>
+                    <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium self-start md:self-center">警示趋势</span>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2">
+                        <div class="mb-6">
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">现象描述</h5>
+                            <p class="text-gray-600">
+                                2026年，谷歌、亚马逊、Meta和微软计划合计投入6500亿美元建设数据中心，较上年增长约60%。美国现有近3000个新数据中心在建，导致劳动力安置、环境污染等社会问题加剧。全球高端内存芯片价格飙升6倍，智能手机出货量预计下降12-13%。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">核心驱动力</h5>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                                <li>AI模型规模持续扩大，训练与推理需求呈指数级增长</li>
+                                <li>科技巨头为维持技术领先地位，必须提前布局算力基础设施</li>
+                                <li>能源效率成为核心竞争力，推动芯片架构创新与绿色技术发展</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h5 class="text-lg font-semibold text-gray-700 mb-2">对行业的影响</h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h6 class="font-medium text-gray-700 mb-2">短期效应</h6>
+                                    <p class="text-gray-600">算力资源向头部企业集中，中小企业面临"算力鸿沟"</p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h6 class="font-medium text-gray-700 mb-2">长期效应</h6>
+                                    <p class="text-gray-600">能源与芯片供应成为行业发展的关键约束，倒逼技术创新与商业模式重构</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-4 text-center">科技巨头数据中心投资（单位：十亿美元）</h5>
+                        <div class="chart-container">
+                            <canvas id="datacenterInvestmentChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技术前沿分析 -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                <i class="fa fa-flask text-accent mr-3"></i>
+                技术前沿分析
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 大模型进展 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <h4 class="text-xl font-bold text-secondary mb-4 flex items-center">
+                        <i class="fa fa-code-fork mr-2"></i>
+                        大模型进展
+                    </h4>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">头部厂商版本迭代</h5>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-check text-xs"></i>
+                                </span>
+                                <span>OpenAI发布GPT-5.4，支持100万Token超长上下文，在OSWorld-Verified桌面生产力测试中超越人类基准</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-check text-xs"></i>
+                                </span>
+                                <span>阿里巴巴发布Qwen 3.5系列，包含0.8B、2B、4B和9B参数四个模型，全部采用Apache 2.0开源协议</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-check text-xs"></i>
+                                </span>
+                                <span>谷歌发布Gemini 2.5 Pro，在LMSYS Arena公开评测中以1443分断层领先</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">推理效率突破</h5>
+                        <p class="text-gray-600 mb-4">
+                            模型架构持续创新，GPT-5、Qwen3等均采用MoE（混合专家系统）设计，激活参数占比控制在10-20%，训练效率提升3-5倍。状态空间模型（SSM）在长序列处理方面取得突破，Mamba、Jamba等新架构序列处理能力达100万+tokens，推理速度较Transformer快10倍。
+                        </p>
+                        
+                        <div class="chart-container h-48">
+                            <canvas id="modelEfficiencyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 多模态与AGI探索 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <h4 class="text-xl font-bold text-secondary mb-4 flex items-center">
+                        <i class="fa fa-picture-o mr-2"></i>
+                        多模态与AGI探索
+                    </h4>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">文生视频领域</h5>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="bg-purple-100 text-purple-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-play text-xs"></i>
+                                </span>
+                                <span>Luma AI发布UNI-1自回归图像生成模型，支持参考图引导生成，兼容76种视觉风格</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-purple-100 text-purple-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-play text-xs"></i>
+                                </span>
+                                <span>字节跳动发布Helios模型，140亿参数自回归扩散模型可生成最多1440帧视频</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-red-100 text-red-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-stop text-xs"></i>
+                                </span>
+                                <span>OpenAI于3月24日宣布关停Sora视频生成业务，该应用在上线独立应用仅六个月后宣告终结</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">音频处理领域</h5>
+                        <p class="text-gray-600">
+                            谷歌推出Lyria 3音乐生成功能，支持创建30秒带SynthID水印的原创曲目。Mistral AI发布开源语音合成模型Voxtral TTS，4B参数支持9种语言，零样本克隆语音仅需3秒参考音频，首字延迟约90-100毫秒。
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">AGI探索进展</h5>
+                        <p class="text-gray-600">
+                            北京通用人工智能研究院发布"通通"3.0版本，在空间智能、认知智能与社交智能三大维度实现跨越式升级，具备复杂任务的自主规划与并行任务管理能力，可进入"AI小镇"开展拟人化互动。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 基础设施 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <h4 class="text-xl font-bold text-secondary mb-4 flex items-center">
+                        <i class="fa fa-server mr-2"></i>
+                        基础设施
+                    </h4>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">算力芯片</h5>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-microchip text-xs"></i>
+                                </span>
+                                <span>英伟达GTC 2026大会发布Feynman芯片，采用1.6nm工艺与光通信互联技术，AI算力较前代Blackwell芯片提升2.5倍</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-microchip text-xs"></i>
+                                </span>
+                                <span>华为昇腾910B芯片出货量同比增长220%，昇腾AI集群已覆盖国内超60%的AI训练场景</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-microchip text-xs"></i>
+                                </span>
+                                <span>Meta与AMD签署高达600亿美元的AI芯片基础设施协议，涉及6吉瓦GPU部署</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">数据中心</h5>
+                        <p class="text-gray-600 mb-4">
+                            谷歌、亚马逊、Meta和微软2026年计划合计投入6500亿美元建设数据中心，比上年增长约60%。法国AI初创公司Mistral AI宣布完成8.3亿美元债务融资，用于采购13,800块英伟达GB300 GPU，在巴黎附近建设44兆瓦数据中心。
+                        </p>
+                        
+                        <div class="chart-container h-48">
+                            <canvas id="chipPerformanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 智能体应用 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <h4 class="text-xl font-bold text-secondary mb-4 flex items-center">
+                        <i class="fa fa-robot mr-2"></i>
+                        智能体应用
+                    </h4>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">OpenClaw商业化进展</h5>
+                        <p class="text-gray-600">
+                            OpenClaw（俗称"龙虾AI"）在全球科技圈迅速走红，GitHub星标超过30万。生态繁荣方面，ClawHub市场月交易额达120万美元，集成超5000种技能模块。小米、华为、OPPO等硬件厂商跟进推出miClaw、小艺Claw、小布Claw等产品。
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">企业级智能体</h5>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="bg-yellow-100 text-yellow-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-building text-xs"></i>
+                                </span>
+                                <span>百度文心一言5.0开放智能体创建平台，用户无需代码基础即可生成专属AI助手，平台累计创建智能体超120万个</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-yellow-100 text-yellow-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-building text-xs"></i>
+                                </span>
+                                <span>阿里通义千问Qwen 3.0推出"行业智能体模板"，覆盖电商客服、工业质检等16个垂直场景</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-yellow-100 text-yellow-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">
+                                    <i class="fa fa-building text-xs"></i>
+                                </span>
+                                <span>腾讯QClaw正式开放全量公测，主打微信直连+零门槛部署，集成超5000种技能</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">市场规模预测</h5>
+                        <p class="text-gray-600">
+                            据IDC预测，2026年全球智能体市场规模将突破800亿美元，年复合增长率达65%。2025年市场规模为750-800亿美元，2027年预测达2500亿美元以上。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 市场投融资分析 -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                <i class="fa fa-money text-accent mr-3"></i>
+                市场投融资分析
+            </h3>
+            
+            <div class="bg-white rounded-xl shadow-card p-6 mb-8">
+                <h4 class="text-xl font-bold text-secondary mb-4">总体概况</h4>
+                <p class="text-gray-600 mb-6">
+                    2026年3月，全球AI领域融资持续活跃。据OpenRouter数据显示，中国大模型周调用量达7.359万亿Token，连续三周超越美国的2.954万亿Token，首次登顶全球。中国AI赛道融资呈现爆发式增长。截至2026年3月13日，中国具身智能领域今年已对外披露88起融资事件，合计融资金额超过200亿元人民币。
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-4 text-center">中国AI大模型周调用量对比（单位：万亿Token）</h5>
+                        <div class="chart-container">
+                            <canvas id="tokenUsageChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-4 text-center">中国AI融资趋势（2026年Q1）</h5>
+                        <div class="chart-container">
+                            <canvas id="chinaInvestmentChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 class="text-xl font-bold text-secondary mb-4">重点融资事件（TOP 5）</h4>
+                <div class="overflow-x-auto scrollbar-thin">
+                    <table class="min-w-full bg-white">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">公司名称</th>
+                                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">领域</th>
+                                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">融资金额</th>
+                                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">投资方</th>
+                                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">简要点评</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-blue-50">
+                                <td class="py-3 px-4 text-sm text-gray-700 font-medium">OpenAI</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">大模型</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">1220亿美元</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">亚马逊500亿、英伟达300亿、软银300亿等</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">人类商业史上最大单笔私募融资，投后估值8520亿美元</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="py-3 px-4 text-sm text-gray-700 font-medium">华深智药</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">AI+生物技术</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">7.87亿美元</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">Dimension Capital、DST Global、赛诺菲等</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">刷新2026生物技术公司融资记录，专注AI抗体优化平台开发</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="py-3 px-4 text-sm text-gray-700 font-medium">银河通用机器人</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">具身智能</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">25亿元人民币</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">未披露</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">刷新国内具身智能领域融资纪录，单轮融资金额最高</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="py-3 px-4 text-sm text-gray-700 font-medium">Mistral AI</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">AI基础设施</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">8.3亿美元（债务融资）</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">汇丰控股、三菱日联、法国巴黎银行等</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">欧洲AI主权竞赛转向基建层，用于采购英伟达芯片建设数据中心</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="py-3 px-4 text-sm text-gray-700 font-medium">软银（追加投资OpenAI）</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">战略投资</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">400亿美元（过桥贷款）</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">摩根大通、高盛等五大银行</td>
+                                <td class="py-3 px-4 text-sm text-gray-600">软银历史上最大笔美元贷款，累计投资OpenAI达646亿美元</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 政策与监管梳理 -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                <i class="fa fa-gavel text-accent mr-3"></i>
+                政策与监管梳理
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 中国政策 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fa fa-flag text-red-600"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-secondary">中国政策动态</h4>
+                    </div>
+                    
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            <p>中国政府在2026年政府工作报告中首次提出"打造智能经济新形态"，包括深化拓展"人工智能+"</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            <p>中国国防部表示，中国愿与世界各国一道，推进以联合国为核心的人工智能多边治理进程</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            <p>中国信通院牵头制定我国首个具身智能行业标准，2026年6月1日起实施，明确系统构成与测试框架</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 美国政策 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fa fa-flag text-blue-600"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-secondary">美国政策动态</h4>
+                    </div>
+                    
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <p>埃隆·马斯克宣布，Terafab大型芯片制造项目将落户得克萨斯州奥斯汀，建设一座集设计、制造、封装和测试于一体的先进晶圆厂</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <p>美国五角大楼以130亿美元将Palantir Maven系统收编为核心军事系统，AI在军事领域的应用引发广泛关注</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 欧盟政策 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fa fa-flag text-yellow-600"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-secondary">欧盟政策动态</h4>
+                    </div>
+                    
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-yellow-500 mr-2">•</span>
+                            <p>欧盟理事会就一项简化部分AI监管规则的提案达成一致，主要涉及精简欧盟AI监管框架，减轻企业合规负担等内容</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-500 mr-2">•</span>
+                            <p>德国政府公布的数据中心扩容战略规划显示，到2030年，德国通用数据中心的算力将在2025年基础上至少翻一番</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-500 mr-2">•</span>
+                            <p>随着欧盟《人工智能法案》落地，对数据主权、隐私保护和算法透明度的要求空前严格</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 争议与反思探讨 -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                <i class="fa fa-balance-scale text-accent mr-3"></i>
+                争议与反思探讨
+            </h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- 争议一 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <h4 class="text-xl font-bold text-secondary mb-4">争议话题一：Scaling Law（缩放定律）是否失效？</h4>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">支持方观点</h5>
+                        <p class="text-gray-600">
+                            随着模型规模持续扩大，性能提升边际效应递减，训练成本呈指数级增长，单纯增加参数规模的经济性显著下降。OpenAI o3模型在ARC-AGI-3测试中得分从GPT-5.4的0.26%提升至2.8%，实现10倍突破，但推理成本增加50-100倍。
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">反对方观点</h5>
+                        <p class="text-gray-600">
+                            缩放定律依然有效，只是需要结合架构创新与训练方法优化。Qwen 3.5 9B模型在多项基准上超越710.5亿参数的GPT-OSS-120B，证明通过MoE架构、线性注意力等技术优化，可以实现"以小博大"的能力提升。
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">综合研判</h5>
+                        <p class="text-gray-600 font-medium">
+                            缩放定律并未失效，而是进入新阶段。未来AI能力提升将依赖于规模、架构、数据的协同优化，而非单纯依赖参数规模扩张。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 争议二 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <h4 class="text-xl font-bold text-secondary mb-4">争议话题二：AI版权诉讼新进展</h4>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">内容创作者方</h5>
+                        <p class="text-gray-600">
+                            AI模型在训练过程中未经授权使用大量受版权保护的内容，侵犯了创作者权益，应当获得合理补偿。部分艺术家发起集体诉讼，要求AI公司停止使用其作品进行模型训练。
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">AI公司方</h5>
+                        <p class="text-gray-600">
+                            模型训练属于合理使用范畴，生成内容具有原创性，不应受版权法限制。部分公司采取"选择退出"机制，允许创作者选择不被纳入训练数据。
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">综合研判</h5>
+                        <p class="text-gray-600 font-medium">
+                            AI版权问题短期内难以形成统一解决方案，需要法律界、产业界、创作界共同探索平衡各方利益的新模式。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 争议三 -->
+                <div class="bg-white rounded-xl shadow-card p-6 card-transition hover:shadow-card-hover">
+                    <h4 class="text-xl font-bold text-secondary mb-4">争议话题三：Sora关停的深层原因</h4>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">商业化压力派</h5>
+                        <p class="text-gray-600">
+                            Sora用户留存率断崖式下跌是关停主因。从2025年9月推出时的火爆到2026年1月下载量暴跌45%，月收入从54万美元降至36.7万美元，说明市场需求不及预期。
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">战略调整派</h5>
+                        <p class="text-gray-600">
+                            OpenAI面临来自Anthropic和谷歌日益激烈的竞争压力，CEO奥特曼宣布公司进入"红色代码"紧急状态，需要聚焦核心优先事项，将算力资源重新分配到利润更丰厚的代码生成、推理或文本生成任务。
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-lg font-semibold text-gray-700 mb-2">综合研判</h5>
+                        <p class="text-gray-600 font-medium">
+                            Sora关停是AI行业从技术炫酷到商业现实的缩影，反映企业在技术投入与商业回报之间的平衡困境。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下月前瞻预测 -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                <i class="fa fa-binoculars text-accent mr-3"></i>
+                下月前瞻预测
+            </h3>
+            
+            <div class="bg-white rounded-xl shadow-card p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- 会议前瞻 -->
+                    <div class="bg-blue-50 rounded-lg p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa fa-calendar text-blue-600"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-secondary">会议前瞻</h4>
+                        </div>
+                        
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                <p>4月中旬预计举办全球人工智能安全峰会，各国将就AI治理议题展开深入讨论</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                <p>4月下旬，Google I/O开发者大会将发布Gemini系列最新进展</p>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 产品发布 -->
+                    <div class="bg-green-50 rounded-lg p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa fa-rocket text-green-600"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-secondary">产品发布</h4>
+                        </div>
+                        
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">•</span>
+                                <p>阿里Qwen 3.5系列预计在4月全面开放API调用，支持开发者自定义微调</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">•</span>
+                                <p>谷歌计划4月开放Gemini 3.1 Ultra API，针对医疗、金融、制造等垂直领域提供定制化模型服务</p>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 政策节点 -->
+                    <div class="bg-yellow-50 rounded-lg p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa fa-gavel text-yellow-600"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-secondary">政策节点</h4>
+                        </div>
+                        
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-yellow-500 mr-2">•</span>
+                                <p>中国具身智能行业标准将于2026年6月1日起实施，4月将进入标准宣贯与试点准备阶段</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-500 mr-2">•</span>
+                                <p>欧盟《人工智能法案》部分条款将于4月进入生效前的过渡期</p>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 融资动向 -->
+                    <div class="bg-purple-50 rounded-lg p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa fa-money text-purple-600"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-secondary">融资动向</h4>
+                        </div>
+                        
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-purple-500 mr-2">•</span>
+                                <p>OpenAI预计在2026年Q4提交IPO申请，4月可能披露更多上市准备信息</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-purple-500 mr-2">•</span>
+                                <p>中国AI融资热潮有望持续，具身智能、AI制药、算力基础设施等领域可能涌现更多大额融资案例</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结语 -->
+        <section class="mb-12">
+            <div class="bg-gradient-blue text-white rounded-xl shadow-card p-8">
+                <h3 class="text-2xl font-bold mb-6">结语</h3>
+                <p class="mb-4">
+                    2026年3月，全球AI产业在技术创新、产业落地、资本投入、政策监管等方面呈现快速发展态势。智能体技术从概念走向现实，开源生态持续壮大，算力基础设施建设加速推进，多模态能力不断突破。
+                </p>
+                <p class="mb-4">
+                    与此同时，行业面临商业化压力、合规成本提升、技术滥用风险等多重挑战。平衡创新与安全、协调发展与治理、统筹效率与公平，成为全球AI产业健康可持续发展的关键议题。
+                </p>
+                <p>
+                    展望未来，AI产业将继续沿着技术深化、应用拓展、生态完善的方向前进，推动经济社会数字化转型，为人类文明进步注入新动能。各方应加强合作，共同应对风险挑战，推动AI技术向善发展。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h4 class="text-lg font-bold mb-2">全球人工智能产业研究院</h4>
+                    <p class="text-gray-400">报告完成时间：2026年3月31日</p>
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-gray-400 mb-2">联系方式：ai-report@gai-institute.org</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
+                © 2026 全球人工智能产业研究院 版权所有
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 图表初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // OpenClaw GitHub星标增长趋势图
+            const openclawCtx = document.getElementById('openclawChart').getContext('2d');
+            const openclawChart = new Chart(openclawCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2025-12', '2026-01', '2026-02', '2026-03'],
+                    datasets: [{
+                        label: 'GitHub星标数',
+                        data: [50000, 120000, 210000, 300000],
+                        backgroundColor: 'rgba(66, 153, 225, 0.2)',
+                        borderColor: 'rgba(66, 153, 225, 1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        pointBackgroundColor: 'rgba(66, 153, 225, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '星标数'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 主流开源模型下载量对比图
+            const modelDownloadCtx = document.getElementById('modelDownloadChart').getContext('2d');
+            const modelDownloadChart = new Chart(modelDownloadCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['阿里Qwen 3.0', 'Meta Llama 4', '百度文心Lite', 'Mistral 7B'],
+                    datasets: [{
+                        label: '下载量（万次）',
+                        data: [5000, 4200, 300, 1800],
+                        backgroundColor: [
+                            'rgba(66, 153, 225, 0.7)',
+                            'rgba(72, 187, 120, 0.7)',
+                            'rgba(237, 100, 166, 0.7)',
+                            'rgba(246, 185, 59, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(66, 153, 225, 1)',
+                            'rgba(72, 187, 120, 1)',
+                            'rgba(237, 100, 166, 1)',
+                            'rgba(246, 185, 59, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '下载量（万次）'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 科技巨头数据中心投资图
+            const datacenterInvestmentCtx = document.getElementById('datacenterInvestmentChart').getContext('2d');
+            const datacenterInvestmentChart = new Chart(datacenterInvestmentCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['谷歌', '亚马逊', 'Meta', '微软'],
+                    datasets: [{
+                        label: '2025年投资（十亿美元）',
+                        data: [120, 150, 80, 100],
+                        backgroundColor: 'rgba(66, 153, 225, 0.7)',
+                        borderColor: 'rgba(66, 153, 225, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: '2026年计划投资（十亿美元）',
+                        data: [200, 220, 130, 180],
+                        backgroundColor: 'rgba(72, 187, 120, 0.7)',
+                        borderColor: 'rgba(72, 187, 120, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '投资金额（十亿美元）'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 模型效率对比图
+            const modelEfficiencyCtx = document.getElementById('modelEfficiencyChart').getContext('2d');
+            const modelEfficiencyChart = new Chart(modelEfficiencyCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['训练效率', '推理速度', '参数利用率', '长文本处理', '多模态能力'],
+                    datasets: [{
+                        label: '传统Transformer',
+                        data: [65, 60, 70, 50, 75],
+                        backgroundColor: 'rgba(66, 153, 225, 0.2)',
+                        borderColor: 'rgba(66, 153, 225, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(66, 153, 225, 1)'
+                    }, {
+                        label: 'MoE架构',
+                        data: [85, 80, 90, 75, 85],
+                        backgroundColor: 'rgba(72, 187, 120, 0.2)',
+                        borderColor: 'rgba(72, 187, 120, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(72, 187, 120, 1)'
+                    }, {
+                        label: 'SSM架构',
+                        data: [75, 95, 85, 95, 70],
+                        backgroundColor: 'rgba(246, 185, 59, 0.2)',
+                        borderColor: 'rgba(246, 185, 59, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(246, 185, 59, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+            
+            // 芯片性能对比图
+            const chipPerformanceCtx = document.getElementById('chipPerformanceChart').getContext('2d');
+            const chipPerformanceChart = new Chart(chipPerformanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['NVIDIA Blackwell', 'NVIDIA Feynman', '华为昇腾910B', 'AMD MI300X'],
+                    datasets: [{
+                        label: 'AI算力（PFLOPS）',
+                        data: [400, 1200, 320, 280],
+                        backgroundColor: [
+                            'rgba(66, 153, 225, 0.7)',
+                            'rgba(72, 187, 120, 0.7)',
+                            'rgba(237, 100, 166, 0.7)',
+                            'rgba(246, 185, 59, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(66, 153, 225, 1)',
+                            'rgba(72, 187, 120, 1)',
+                            'rgba(237, 100, 166, 1)',
+                            'rgba(246, 185, 59, 1)'
+                        ],
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    }, {
+                        label: '能效比（PFLOPS/W）',
+                        data: [0.8, 2.0, 1.2, 0.9],
+                        type: 'line',
+                        backgroundColor: 'rgba(107, 114, 128, 0.2)',
+                        borderColor: 'rgba(107, 114, 128, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(107, 114, 128, 1)',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'AI算力（PFLOPS）'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '能效比（PFLOPS/W）'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 中国AI大模型周调用量对比图
+            const tokenUsageCtx = document.getElementById('tokenUsageChart').getContext('2d');
+            const tokenUsageChart = new Chart(tokenUsageCtx, {
+                type: 'line',
+                data: {
+                    labels: ['第1周', '第2周', '第3周', '第4周'],
+                    datasets: [{
+                        label: '中国',
+                        data: [5.2, 6.8, 7.3, 7.4],
+                        backgroundColor: 'rgba(237, 100, 166, 0.2)',
+                        borderColor: 'rgba(237, 100, 166, 1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        pointBackgroundColor: 'rgba(237, 100, 166, 1)'
+                    }, {
+                        label: '美国',
+                        data: [3.8, 3.5, 3.2, 2.9],
+                        backgroundColor: 'rgba(66, 153, 225, 0.2)',
+                        borderColor: 'rgba(66, 153, 225, 1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        pointBackgroundColor: 'rgba(66, 153, 225, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '万亿Token'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 中国AI融资趋势图
+            const chinaInvestmentCtx = document.getElementById('chinaInvestmentChart').getContext('2d');
+            const chinaInvestmentChart = new Chart(chinaInvestmentCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['1月', '2月', '3月'],
+                    datasets: [{
+                        label: '融资事件数',
+                        data: [25, 32, 31],
+                        backgroundColor: 'rgba(66, 153, 225, 0.7)',
+                        borderColor: 'rgba(66, 153, 225, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    }, {
+                        label: '融资金额（亿元）',
+                        data: [55, 72, 73],
+                        type: 'line',
+                        backgroundColor: 'rgba(72, 187, 120, 0.2)',
+                        borderColor: 'rgba(72, 187, 120, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(72, 187, 120, 1)',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: '融资事件数'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '融资金额（亿元）'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        
+        // 主题切换功能
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-moon-o')) {
+                icon.classList.remove('fa-moon-o');
+                icon.classList.add('fa-sun-o');
+            } else {
+                icon.classList.remove('fa-sun-o');
+                icon.classList.add('fa-moon-o');
+            }
+        });
+        
+        // 滚动到顶部按钮
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.innerHTML = '<i class="fa fa-arrow-up"></i>';
+        scrollToTopBtn.className = 'fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-secondary transition-all opacity-0 invisible';
+        document.body.appendChild(scrollToTopBtn);
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
